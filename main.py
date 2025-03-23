@@ -2,10 +2,10 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/helloworld")
 async def root():
     return {"Hello": "World"}
 
-@app.get("/teste1")
+@app.get("/funcaoteste")
 async def funcaoteste():
     return {"teste": "deu certo"}
