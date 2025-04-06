@@ -1,6 +1,7 @@
 import random
 from fastapi import FastAPI
 from pydantic import BaseModel
+import secrets
 
 app = FastAPI()
 
@@ -18,7 +19,7 @@ async def root():
 
 @app.get("/funcaoteste")
 async def funcaoteste():
-    return {"teste": True, "num_aleatorio": random.randint(0, 1000)}
+    return {"teste": True, "num_aleatorio": secrets.randbelow(1001)}
 
 
 @app.post("/estudantes/cadastro")
