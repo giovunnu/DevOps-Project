@@ -11,7 +11,6 @@ class Estudante(BaseModel):
     curso: str
     ativo: bool
 
-
 @app.get("/helloworld")
 async def root():
     return {"Hello": "World"}
