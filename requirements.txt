@@ -1,1 +1,4 @@
 fastapi==0.115.11
+httpx
+uvicorn
+pytest
