@@ -1,4 +1,5 @@
 name: Pull Request
+
 on:
   push:
     branches: [ main ]
@@ -10,35 +11,48 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      - name: Black
-        uses: microsoft/action-python@0.7.0
-        with:
-          black: true
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
-      - name: Bandit
-        uses: microsoft/action-python@0.7.0
-        with:          
-          bandit: true
-
-      - name: Pylint
-        uses: microsoft/action-python@0.7.0
+      - name: Instalar Python
+        uses: actions/setup-python@v4
         with:
-          pylint: true
-          
-      - name: Pyright
-        uses: microsoft/action-python@0.7.0
-        with:          
-          pyright: true
-          
-      - name: Flake8
-        uses: microsoft/action-python@0.7.0
-        with:          
-          flake8: true
+          python-version: '3.11'
+
+      - name: Instalar ferramentas de lint
+        run: |
+          pip install black bandit pylint pyright flake8
+
+      - name: Rodar Black
+        run: black --check .
+
+      - name: Rodar Bandit
+        run: bandit -r .
+
+      - name: Rodar Pylint
+        run: pylint nome_do_seu_pacote_ou_arquivo.py
+
+      - name: Rodar Pyright
+        run: pyright .
+
+      - name: Rodar Flake8
+        run: flake8 .
 
   testing:
     runs-on: ubuntu-latest
-    steps:    
-      - name: Pytest
-        uses: microsoft/action-python@0.7.0
-        with:          
-          testing: true
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Rodar testes com Pytest
+        run: pytest
