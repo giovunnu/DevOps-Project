@@ -1,5 +1,10 @@
-import unittest
+from fastapi.testclient import TestClient
+from main import app
 
-class TestExample(unittest.TestCase):
-    def test_exemplo(self):
-        self.assertEqual(1 + 1, 2)
+client = TestClient(app)
+
+
+def test_helloworld():
+    response = client.get("/helloworld")
+    assert response.status_code == 200
+    assert response.json() == {"Hello": "World"}
