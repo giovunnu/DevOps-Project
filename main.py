@@ -18,7 +18,7 @@ async def root():
 
 @app.get("/funcaoteste")
 async def funcaoteste():
-    return {"teste": True, "num_aleatorio": secrets.randbelow(1002)}
+    return {"teste": True, "num_aleatorio": secrets.randbelow(1003)}
 
 
 @app.post("/estudantes/cadastro")
