@@ -55,11 +55,10 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
 
   discord:
-    name: Send Discord Webhook
-    runs-on: ubuntu-latest
-    if: always()
+    name: "Send Discord Webhook"
+    runs-on: "ubuntu-latest"
     steps:
-      - uses: hugoalh/send-discord-webhook-ghaction@v7.0.0
+      - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
         with:
-          key: ${{ secrets.DISCORD_WEBHOOK }}
-          content: "Teste Notificação Discord"
+          key: "${{secrets.DISCORD_WEBHOOK}}"
+          content: "Teste de Notificação Discord para cada Commit"
