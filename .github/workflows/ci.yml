@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Discord Notify Webhook
+      - name: Discord Notify Webhook!
         uses: EDUJOS/ds-webhook@v1.0.0
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
