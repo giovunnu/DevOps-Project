@@ -65,5 +65,5 @@ jobs:
         uses: EDUJOS/ds-webhook@v1.0.0
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: Mensagem de Integração Discord
+          title: Mensagem de Integração do Discord
           description: Esta é uma mensagem de integração do Discord ao GitHub Actions!
