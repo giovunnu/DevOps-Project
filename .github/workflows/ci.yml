@@ -55,8 +55,8 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
 
   discord:
-    needs: deploy
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - uses: actions/checkout@v3
 
@@ -65,4 +65,4 @@ jobs:
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: Mensagem de Integração do Discord
-          description: Deploy finalizado com sucesso!
+          description: Workflow finalizado.
