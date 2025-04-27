@@ -54,15 +54,11 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
 
-  discord:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Discord Notify Webhook
-        uses: EDUJOS/ds-webhook@v1.0.0
-        with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: Mensagem de Integração do Discord
-          description: Deploy finalizado com sucesso!
+      discord:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Discord Notify Webhook
+            uses: appleboy/discord-webhook-action@v0.0.13
+            with:
+              webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+              message: 'Teste de mensagem do Discord.'
