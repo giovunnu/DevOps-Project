@@ -55,14 +55,11 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
 
   discord:
+    name: Send Discord Webhook
     runs-on: ubuntu-latest
     if: always()
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Discord Notify Webhook!
-        uses: EDUJOS/ds-webhook@v1.0.0
+      - uses: hugoalh/send-discord-webhook-ghaction@v7.0.0
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: Mensagem de Integração do Discord
-          description: Workflow finalizado.
+          key: ${{ secrets.DISCORD_WEBHOOK }}
+          content: "Teste Notificação Discord"
