@@ -53,3 +53,15 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
+
+  discord:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Discord Notify Webhook
+        uses: EDUJOS/ds-webhook@v1.0.0
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          title: Mensagem de Integração Discord
+          description: Esta é uma mensagem de integração do Discord ao GitHub Actions!
