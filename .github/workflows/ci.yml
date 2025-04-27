@@ -55,6 +55,8 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
 
   discord:
+    on:
+      - push
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
